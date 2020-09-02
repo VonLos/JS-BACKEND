@@ -18,8 +18,9 @@ class ResourcesController < ApplicationController
     end
 
     def destroy
-        res = Resource.find_by(id: params['id'])
-        res.destroy
+        resource = Resource.find_by(id: params[:id])
+        resource.destroy
+        render json: {message: "Successfully deleted #{resource.name}!"}
     end
 
     private
